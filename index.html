@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChayanPortfolio</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="script.js">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        border: none;
+        outline: none;
+        scroll-behavior: smooth;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    :root {
+        --bg-color: #1f242d;
+        --second-bg-color: #323946;
+        --text-color: #fff;
+        --main-color: #0ef;
+    }
+
+    html {
+        font-size: 62.5%;
+        overflow-x: hidden;
+    }
+
+    body {
+        background: var(--bg-color);
+        color: var(--text-color);
+    }
+
+    section {
+        min-height: 100vh;
+        padding: 10rem 9% 2rem;
+
+
+    }
+
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 2rem 9%;
+        background: var(--bg-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+    }
+
+    .header .sticky {
+        border-bottom: .1rem solid rgba(0, 0, 0, .2);
+    }
+
+    .logo {
+        font-size: 2.5rem;
+        color: var(--text-color);
+        font-weight: 600;
+        cursor: default;
+        text-decoration: none;
+    }
+
+    .navbar a {
+        font-size: 1.7rem;
+        color: var(--text-color);
+        margin-left: 4rem;
+        text-decoration: none;
+    }
+
+    .navbar a:hover {
+        color: var(--main-color);
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+        color: var(--main-color);
+    }
+
+    #menu-icon {
+        font-size: 3.6rem;
+        color: var(--text-color);
+        display: none;
+    }
+
+    .home {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .home-img img {
+        width: 40vw;
+        /* anima */
+        animation: floatImage 4s ease-in-out infinite;
+    }
+    @keyframes floatImage{
+        0%{
+            transform: translateY(0);
+        }
+        50%{
+            transform: translateY(-2.4rem);
+        }
+        100%{
+            transform: translateY(0);
+        }
+    }
+
+    .home-content h3 {
+        font-size: 3.2rem;
+        font-weight: 700;
+    }
+
+    .home-content h3:nth-of-type(2) {
+        margin-bottom: 2rem;
+    }
+
+    span {
+        color: var(--main-color);
+    }
+
+    .home-content h1 {
+        font-size: 5.6rem;
+        font-weight: 700;
+        line-height: 1.3;
+
+    }
+
+    .home-content p {
+        font-size: 1.6rem;
+    }
+
+    .social-media a {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 4rem;
+        height: 4rem;
+        background: transparent;
+        border: .2rem solid var(--main-color);
+        border-radius: 50%;
+        font-size: 2rem;
+        color: var(--main-color);
+        margin: 3rem 1.5rem 3rem 0;
+        transition: .5s ease;
+        text-decoration: none;
+    }
+
+    .social-media a:hover {
+        background: var(--main-color);
+        color: var(--second-bg-color);
+        box-shadow: 0 0 1rem var(--main-color);
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 1rem 2.8rem;
+        background: var(--main-color);
+        border-radius: 4rem;
+        box-shadow: 0 0 1rem var(--main-color);
+        font-size: 1.6rem;
+        color: var(--second-bg-color);
+        letter-spacing: .1rem;
+        font-weight: 600;
+    }
+
+    .btn:hover {
+        box-shadow: none;
+
+    }
+
+    .about {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        background: var(--second-bg-color);
+    }
+
+    .about-img img {
+        width: 20vw;
+    }
+
+    .heading {
+        text-align: center;
+        font-size: 4.5rem;
+
+    }
+
+    .about {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        background: var(--second-bg-color);
+    }
+
+    .about-img img {
+        width: 35vw;
+    }
+
+    .heading {
+        text-align: center;
+        font-size: 4.5rem;
+    }
+
+    .about-content h2 {
+        text-align: left;
+        line-height: 1.2;
+    }
+
+    .about-content h3 {
+        font-size: 2.6rem;
+        margin: 2rem 0 3rem;
+    }
+
+    .about-content p {
+        font-size: 1.6rem;
+        margin: 2rem 0 3rem;
+    }
+
+    .services h2 {
+        margin-bottom: 5rem;
+    }
+
+    .services-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .services-container .services-box {
+        flex: 1 1 30rem;
+        background: var(--second-bg-color);
+        padding: 3rem 2rem 4rem;
+        border-radius: 2rem;
+        text-align: center;
+        border: .2rem solid var(--bg-color);
+        transition: .7s ease;
+    }
+
+    .services-container .services-box:hover {
+        border-color: var(--main-color);
+        transform: scale(1.02);
+
+    }
+
+    .services-box i {
+        font-size: 7rem;
+        color: var(--main-color);
+    }
+
+    .services-box h3 {
+        font-size: 2.6rem;
+    }
+
+    .services-box p {
+        font-size: 1.6rem;
+        margin: 1rem 0 3rem;
+    }
+
+    /* .portfolio{
+    background: var(--second-bg-color);
+}
+.portfolio h2{
+    margin-bottom: 4rem;
+}
+ .portfolio-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    gap: 2.5rem;
+} */
+    /* .portfolio-container .portfolio-box{
+    position: relative;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem var(--bg-color);
+    overflow: hidden;
+    display: flex;
+} */
+    /* .portfolio-box img{
+    width: 100%;
+} */
+    /* .portfolio-box .portfolio-layer{
+    position : absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, .1),var(--main-color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 4rem;
+} */
+
+    /* Center align the column contents */
+    .col-centered {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Center align the image within the column */
+    .col-centered img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    /* Center align the link within the column */
+    .col-centered a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+    }
+
+    .contact h2 {
+        margin-bottom: 3rem;
+    }
+
+    .contact form {
+        max-width: 70rem;
+        margin: 1rem auto;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .contact form .input-box {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .contact form .input-box input,
+    .contact form textarea {
+        width: 100%;
+        padding: 1.5rem;
+        font-size: 1.6rem;
+        color: var(--text-color);
+        background-color: var(--second-bg-color);
+        border-radius: .8rem;
+        margin: .7rem 0;
+    }
+
+    .contact form .input-box input {
+        width: 49%;
+    }
+
+    .contact form textarea {
+        resize: none;
+        height: 150px;
+        cursor: pointer;
+    }
+
+    .contact form .btn {
+        margin-top: 2rem;
+
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 2rem 9%;
+        background: var(--second-bg-color);
+    }
+
+    .footer-text p {
+        font-size: 1.6rem;
+    }
+
+    .footer-iconTop a {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: .8rem;
+        background: var(--main-color);
+        border-radius: .8rem;
+        transition: .5s ease;
+        text-decoration: none;
+    }
+
+    .footer-iconTop a:hover {
+        box-shadow: 0 0 1rem var(--main-color);
+    }
+
+    .footer-iconTop a i {
+        font-size: 2.4rem;
+        color: var(--second-bg-color);
+    }
+
+    /* Breakpoints */
+
+    @media (max-width : 1200px) {
+        html {
+            font-size: 55%;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .header {
+            padding: 2rem 3%;
+        }
+
+        section {
+            padding: 10rem 3% 2rem;
+        }
+
+        .services {
+            padding-bottom: 7rem;
+        }
+
+        .portfolio {
+            padding-bottom: 7rem;
+        }
+
+        .contact {
+            min-height: auto;
+        }
+
+        .footer {
+            padding: 2rem 3%;
+        }
+    }
+
+    @media (max-width:768px) {
+        #menu-icon {
+            display: block;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            padding: 1rem 3%;
+            background: var(--bg-color);
+            border-top: .1rem solid rgba(0, 0, 0, .2);
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+            display: none;
+        }
+
+        .navbar.active {
+            display: block;
+        }
+
+        .navbar a {
+            display: block;
+            font-size: 2rem;
+            margin: 3rem 0;
+        }
+
+        .home {
+            flex-direction: column;
+        }
+
+        .home-content h3 {
+            font-size: 2.6rem;
+        }
+
+        .home-content h1 {
+            font-size: 5rem;
+        }
+
+        .home-img img {
+            width: 100vw;
+            margin-top: 4rem;
+
+        }
+
+        .about {
+            flex-direction: column-reverse;
+        }
+
+        .about img {
+            width: 100vw;
+            margin-top: 4rem;
+
+        }
+
+        .services h2 {
+            margin-bottom: 3rem;
+        } */
+
+    .portfolio h2{
+        margin-bottom: 3rem;
+     }
+     .portfolio-container{
+        grid-template-columns: repeat(2,1fr);
+     }
+
+ } 
+
+    @media (max-width: 617px){
+    .portfolio-container{
+        grid-template-columns: 1fr;
+    }
+}
+    @media (max-width:450px) {
+        html {
+            font-size: 50%;
+        }
+
+        .contact form .input-box input {
+            width: 100%;
+        }
+
+    }
+
+    @media (max-width:365px) {
+
+        .home-img img {
+            width: 90vw;
+        }
+
+        .about-img img {
+            width: 90vw;
+        }
+
+        .footer {
+            flex-direction: column-reverse;
+        }
+
+        .footer p {
+            text-align: center;
+            margin-top: 2rem;
+            margin-right: 2rem;
+        }
+
+    }
+</style>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">ChayanPortfolio.<a>
+                <i class='bx bx-menu' id="menu-icon"></i>
+                <nav class="navbar">
+                    <a href="#home" class="active">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Service</a>
+                    <a href="#portfolio">Project</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+    </header>
+
+    <!-- home section design  -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>Hello, It's me</h3>
+            <h1>Chayandeep Ghatowar</h1>
+            <h3>And I'm a <span class="multiple-text"></span></h3>
+            <p>To know more about me , go through the link below...</p>
+            <div class="social-media">
+                <a href="https://appopen.me/web/qcQV8TR" target="_blank"><i class='bx bxl-facebook'></i></a>
+                <!-- <a href="#"><i class='bx bxl-twitter'></i></a> -->
+                <a href="https://appopen.me/web/VVY9yMC" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://appopen.me/ig/mr-chayandeep859" target="_blank"><i class='bx bxl-instagram'></i></a>
+            </div>
+            <a href="https://drive.google.com/file/d/19RX7KVrSFM_D5LXCRKVujNkySlHb0Xhe/view?usp=share_link" target="_blank" class="btn">Download CV</a>
+
+        </div>
+        <div class="home-img">
+            <img src="./Chayandeep.png" alt="">
+        </div>
+    </section>
+
+    <!-- about section design -->
+
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="./Chayandeep.png" alt="">
+        </div>
+        <div class="about-content">
+            <h2 class="heading">About <span>Me</span></h2>
+            <h3>Frontend Developer!</h3>
+            <p>Hi, I am Chayandeep, a Tech-Enthusiast belonging from a beautiful place of Assam, i.e Guwahati. <br>
+            Graduated from USTM,Meghalaya, and currently i'm working in a Startup as a "Technical-Coordinator".</p>
+            <!-- <a href="#" class="btn">Read More</a> -->
+        </div>
+    </section>
+
+    <!-- service section design -->
+
+    <section class="services" id="services">
+        <h2 class="heading">My <span>Services</span></h2>
+        <div class="services-container">
+            <div class="services-box">
+                <i class='bx bx-code-alt'></i>
+                <h3>Web Development(UI/UX)</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero ad ipsam dolores fugiat nam at,
+                    ipsum rem, in sit neque quam assumenda repudiandae recusandae commodi deserunt eos maxime quae
+                    impedit.</p>
+                <!-- <a href="#" class="btn">Read More</a> -->
+            </div>
+            <div class="services-box">
+                <i class='bx bxs-paint'></i>
+                <h3>Canva Designer</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero ad ipsam dolores fugiat nam at,
+                    ipsum rem, in sit neque quam assumenda repudiandae recusandae commodi deserunt eos maxime quae
+                    impedit.</p>
+                <!-- <a href="#" class="btn">Read More</a> -->
+            </div>
+            <div class="services-box">
+                <i class='bx bx-bar-chart-alt'></i>
+                <h3>Digital Marketing</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero ad ipsam dolores fugiat nam at,
+                    ipsum rem, in sit neque quam assumenda repudiandae recusandae commodi deserunt eos maxime quae
+                    impedit.</p>
+                <!-- <a href="#" class="btn">Read More</a> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- portfolio section design -->
+
+
+    <section class="portfolio" id="portfolio">
+        <h2 class="heading">Latest <span>Project</span></h2>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="col-md-4 mb-4 col-centered">
+            <h1>Will be Updating Soon!</h1>
+        </div>
+
+        <!-- <div class="portfolio-container"> -->
+            <!-- <div class="row"> -->
+                <!-- <div class="col-md-4 mb-4 col-centered"> -->
+                    <!-- <a href="https://example-project-1.com" target="_blank">
+                        <img src="./ProjectPortfolio.jpg" class="img-fluid">
+                    </a>
+                </div>
+                <div class="col-md-4 mb-4 col-centered">
+                    <a href="https://example-project-2.com" target="_blank">
+                        <img src="./ProjectPortfolio.jpg" class="img-fluid">
+                    </a>
+                </div>
+                <div class="col-md-4 mb-4 col-centered">
+                    <a href="https://example-project-3.com" target="_blank">
+                        <img src="./ProjectPortfolio.jpg" class="img-fluid">
+                    </a>
+                </div>
+                <div class="col-md-4 mb-4 col-centered">
+                    <a href="https://example-project-3.com" target="_blank">
+                        <img src="./ProjectPortfolio.jpg" class="img-fluid">
+                    </a>
+                </div>
+                <div class="col-md-4 mb-4 col-centered">
+                    <a href="https://example-project-3.com" target="_blank">
+                        <img src="./ProjectPortfolio.jpg" class="img-fluid">
+                    </a>
+                </div>
+                <div class="col-md-4 mb-4 col-centered">
+                    <a href="https://example-project-3.com" target="_blank">
+                        <img src="./ProjectPortfolio.jpg" class="img-fluid">
+                    </a> -->
+                <!-- </div> -->
+            <!-- </div> -->
+        <!-- </div> -->
+
+    <!-- </div> -->
+</section>
+        <!-- </div> -->
+
+    <!-- <div class="portfolio-container">
+
+            <div class="portfolio-box">
+                <img src="./ProjectPortfolio.jpg" alt="">
+        </div>
+        <div class="portfolio-box">
+            <img src="./ProjectPortfolio.jpg" alt="">
+        </div>
+        <div class="portfolio-box">
+            <img src="./ProjectPortfolio.jpg" alt="">
+        </div>
+        <div class="portfolio-box">
+            <img src="./ProjectPortfolio.jpg" alt="">
+        </div>
+    </div> -->
+
+    <!-- <div class="portfolio-container">
+            <div class="portfolio-box">
+                <img src="./ProjectPortfolio.jpg" alt="">
+                <div class="portfolio-layer">
+                    <h4>Web Design</h4>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel iusto incidunt, dicta molestiae repellat debitis tempora quae deserunt ullam dignissimos quaerat ut provident nisi beatae ratione expedita, quam nulla? Facere asperiores laborum consequatur unde iusto?</p>
+                    <a href="#"><i class='bx bx-link-alt'></i></a>
+                </div>
+           
+        </div>
+        <div class="portfolio-container">
+            <div class="portfolio-box">
+                <img src="./ProjectPortfolio.jpg" alt="">
+                <div class="portfolio-layer">
+                    <h4>Web Design</h4>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel iusto incidunt, dicta molestiae repellat debitis tempora quae deserunt ullam dignissimos quaerat ut provident nisi beatae ratione expedita, quam nulla? Facere asperiores laborum consequatur unde iusto?</p>
+                    <a href="#"><i class='bx bx-link-alt'></i></a>
+                </div>
+           
+        </div> -->
+
+
+    <!-- contact section design -->
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me!</span></h2>
+        <form action="#">
+            <div class="input-box">
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="Email Address">
+
+            </div>
+            <div class="input-box">
+                <input type="number" placeholder="Mobile Number">
+                <input type="text" placeholder="Email subject">
+            </div>
+            <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+            <input type="submit" value="Send Message" class="btn">
+        </form>
+    </section>
+
+    <!-- footer Design -->
+    <footer class="footer">
+        <div class="footer-text">
+     
+            <p>Copyright &copy; 2023 by Chayandeep | All Rights Reserved</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#home"><i class="bx bx-up-arrow-alt"></i></a>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/typed.js@2.0.132/dist/typed.umd.js"></script>
+
+</body>
+<script>
+    let sections = document.querySelectorAll('section');
+    let navLinks = document.querySelectorAll('header nav a');
+    window.onscroll = () => {
+        sections.forEach(sec => {
+            let top = window.scrollY;
+            let offset = sec.offsetTop - 150;
+            let height = sec.offsetHeight;
+            let id = sec.getAttribute('id');
+
+            if (top >= offset && top < offset + height) {
+                navLinks.forEach(links => {
+                    links.classList.remove('active');
+                    document.querySelector('header nav a[href*' + id + ']').classList.add('active');
+                });
+            };
+        });
+
+        // sticky nav Bar
+
+        let header = document.querySelector('header');
+        header.classList.toggle('sticky', window.scrollY > 100);
+    };
+
+    let menuIcon = document.querySelector('#menu-icon');
+    let navbar = document.querySelector('.navbar');
+
+    menuIcon.onclick = () => {
+        menuIcon.classList.toggle('bx-x');
+        navbar.classList.toggle('active');
+
+    };
+    // menuIcon.classList.remove('bx-x');
+    // navbar.classList.remove('active');
+
+    ScrollReveal({
+        // reset : true,
+        distance: '80px',
+        duration: 2000,
+        delay: 200,
+    });
+    ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
+    ScrollReveal().reveal('.home-img, .services-container, .portfolio-box, .contact form', { origin: 'bottom' });
+    ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
+    ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'right' });
+
+    const typed = new Typed ('.multiple-text',{
+        strings: ['Frontend Developer','Digital Creator','Tech-Enthusiast'],
+        typeSpeed: 100,
+        backSpeed: 100,
+        backDelay: 1000,
+        loop: true
+    });
+
+    // Retrieve the form element
+const form = document.querySelector('fcontact');
+
+// Add an event listener for form submission
+form.addEventListener('submit', (event) => {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Retrieve the user's entered data
+  const name = document.querySelector('#name').value;
+  const email = document.querySelector('#email').value;
+  const message = document.querySelector('#message').value;
+
+  // Construct the email message
+  const subject = `New message from ${name}`;
+  const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
+  const mailtoLink = `mailto:deepchayan0715@gmail.com?subject=${subject}&body=${body}`;
+
+  // Open the user's email client with the pre-filled email message
+  window.location.href = mailtoLink;
+});
+
+
+
+</script>
+
+</html>
